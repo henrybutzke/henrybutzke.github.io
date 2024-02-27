@@ -1,16 +1,498 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <title>Home</title>
-    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
-      <link href="headers.css" rel="stylesheet">
-    <meta http-equiv="Refresh" content="0; url='https://www.sumeran.xyz/gdmusic'" />
-  </head>
-  <body>
-  
-  
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranks</title>
+    <style>
+            *,
+            html,
+            body {
+            margin: 0;
+            padding: 0;
+            font-family: "San Francisco";
+            }
+
+            @font-face {
+            font-family: "San Francisco";
+            font-weight: 400;
+            src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
+            }
+
+            @font-face {
+            font-family: "San Francisco";
+            font-weight: 800;
+            src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-bold-webfont.woff");
+            }
+
+            body {
+                background-color: #464545;
+            }
+
+
+
+            .menu-bar {
+            width: 100%;
+            height: 30px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            backdrop-filter: blur(50px);
+            -webkit-backdrop-filter: blur(50px);
+
+            .left {
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+                width: auto;
+                margin-left: 20px;
+
+                .apple-logo {
+                transform: scale(.6);
+                }
+                .menus {
+                height: 100%;
+                display: flex;
+                align-items: center;
+                margin-left: 20px;
+                color: rgba(255, 255, 255, 0.95);
+                font-size: 14px;
+                }
+                .active {
+                font-weight: bold;
+                color: #fff !important;
+                }
+            }
+            .right {
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+                width: 380px;
+                margin-right: 20px;
+                .vol {
+                transform: scale(0.6);
+                margin-right: -10px;
+                }
+                .menu-time {
+                height: 100%;
+                width: auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                }
+                .menu-ico {
+                height: 100%;
+                width: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                    
+
+                i {
+                    display: contents;
+                    font-size: 16px;
+                    color: #fff;
+                }
+                }
+            }
+            }
+
+            .dock {
+            width: auto;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            justify-content: center;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            .dock-container {
+                padding: 3px;
+                width: auto;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 16px;
+                background: rgba(83, 83, 83, 0.25);
+                backdrop-filter: blur(13px);
+                -webkit-backdrop-filter: blur(13px);
+                border: 1px solid rgba(255, 255, 255, 0.18);
+
+                .li-bin {
+                margin-left: 20px;
+                border-left: 1.5px solid rgba(255, 255, 255, 0.4);
+                padding: 0px 10px;
+                }
+                /* .li-1 {
+                &::after {
+                    position: absolute;
+                    width: 5px;
+                    height: 5px;
+                    border-radius: 50%;
+                    background: rgba(255, 255, 255, 0.5);
+                    content: "";
+                    bottom: 2px;
+                }
+                } */
+
+                li {
+                list-style: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 50px;
+                height: 50px;
+                vertical-align: bottom;
+                transition: 0.2s;
+                transform-origin: 50% 100%;
+                &:hover {
+                    margin: 0px 13px 0px 13px;
+                }
+
+                .name {
+                    position: absolute;
+                    top: -70px;
+                    background: rgba(0, 0, 0, 0.5);
+                    color: rgba(255, 255, 255, 0.9);
+                    height: 10px;
+                    padding: 10px 15px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 5px;
+                    visibility: hidden;
+                    &::after {
+                    content: "";
+                    position: absolute;
+                    bottom: -10px;
+                    width: 0;
+                    height: 0;
+                    backdrop-filter: blur(13px);
+                    -webkit-backdrop-filter: blur(13px);
+                    border-left: 10px solid transparent;
+                    border-right: 10px solid transparent;
+                    border-top: 10px solid rgba(0, 0, 0, 0.5);
+                    }
+                }
+
+                .ico {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    transition: 0.3s;
+                }
+                .ico-bin {
+                    width: 94% !important;
+                    height: 94% !important;
+                    object-fit: cover;
+                    transition: 0.2s;
+
+                    &:hover {
+                    margin-left: 10px;
+                    }
+                }
+                }
+            }
+            }
+
+            .li-1:hover {
+                .name {
+                visibility: visible !important;
+                }
+            }
+
+            .main {
+                font-size: 40px;
+                display: flex;
+                justify-content: center;
+                color: rgb(128, 128, 128);
+            }
+
+
+
+    </style>
+</head>
+<body>
+          <div class="main">
+            <div class="slave" style="display: none;">
+                <h1>Slaves</h1>
+            </div>
+            <div class="citezins" style="display: none;">
+                <h1>Citezins</h1>
+                <h4>-Emily D</h4>
+                <h4>-Isavela</h4>
+                <h4>-Sophie</h4>
+                <h4>-Emily B</h4>
+                <h4>-Polly</h4>
+            </div>
+            <div class="lower-sct" style="display: none;">
+                <h1>Lower Scout</h1>
+                <h4>-Beatriz</h4>
+                <h4>-Micheal</h4>
+            </div>
+            <div class="Upper-sct" style="display: none;">
+                <h1>Upper Scout</h1>
+                <h4>-Tyler</h4>
+            </div>
+            <div class="General" style="display: none;">
+                <h1>General</h1>
+                <h4>-Thomas</h4>
+                <h4>-Ryan</h4>
+            </div>
+            <div class="Pineapple" style="display: none;">
+                <h1>Pineapple</h1>
+                <h4>-Archie</h4>
+                <h4>-Sandy</h4>
+            </div>
+            <div class="Pinecone" style="display: none;">
+                <h1>Pinecone</h1>
+            </div>
+            <div class="Noble" style="display: none;">
+                <h1>Noble</h1>
+                <h4>-Zack</h4>
+                <h4>-Ziggy</h4>
+            </div>
+            <div class="Noble Up" style="display: none;">
+                <h1>Noble Up</h1>
+                <h4>-Ethan</h4>
+                <h4>-Niamh</h4>
+            </div>
+            <div class="Pope" style="display: none;">
+                <h1>Pope</h1>
+                <h4>-Hugo</h4>
+            </div>
+            <div class="Command" style="display: none;">
+                <h1>2nd Command</h1>
+                <h4>-Kenneth</h4>
+            </div>
+            <div class="Queen" style="display: none;">
+                <h1>Queen</h1>
+                <h4>-Henry</h4>
+            </div>
+            <div class="King" style="display: none;">
+                <h1>King</h1>
+                <h4>-Ted</h4>
+            </div>
+          </div>
+
+          <div class="dock">
+            
+            <div class="dock-container">
+              <li class="li-1">
+                <div class="name">Slave</div>
+                <img class="ico" src="https://img.icons8.com/?size=256&id=Z1ugBD01n30Q&format=png" alt="" onclick="Slave()">
+              </li>
+              <li class="li-1">
+                <div class="name">Ctitenzip</div>
+                <img class="ico" src="https://img.icons8.com/?size=256&id=ZC9jzQAxP5Q8&format=png" alt="" onclick="Ctitenzip()">
+              </li>
+              <li class="li-1">
+                <div class="name">Lower Scout</div>
+                <img class="ico" src="https://img.icons8.com/?size=256&id=9Hnn2HdpsWmu&format=png" alt="" onclick="lower_sct1()">
+              </li>
+              <li class="li-1">
+                <div class="name">Upper Scout</div>
+                <img class="ico" src="https://img.icons8.com/?size=256&id=t75eipjxZ85e&format=png" alt="" onclick="upper_sct1()">
+              </li>
+              <li class="li-1">
+                <div class="name">General</div>
+                <img class="ico" src="https://img.icons8.com/?size=256&id=10562&format=png" alt="" onclick="General1()">
+              </li>
+              <li class="li-1">
+                <div class="name">Pineapple</div>
+                <img class="ico" src="https://img.icons8.com/?size=256&id=95280&format=png" alt="" onclick="Pineapple1()">
+              </li>
+              <li class="li-1">
+                <div class="name">Pinecone</div>
+                <img class="ico" src="https://img.icons8.com/?size=256&id=AkUyWU5Z6lnb&format=png" alt="" onclick="Pinecone1()">
+              </li>
+              <li class="li-1">
+                <div class="name">Noble</div>
+                <img class="ico" src="https://img.icons8.com/?size=256&id=18867&format=png" alt="" onclick="Noble1()">
+              </li>
+              <li class="li-1">
+                <div class="name">Upper Noble</div>
+                <img class="ico" src="https://img.icons8.com/?size=256&id=18904&format=png" alt="" onclick="Noble1_up()">
+              </li>
+              <li class="li-1">
+                <div class="name">Pope</div>
+                <img class="ico" src="https://img.icons8.com/?size=256&id=75N7MQ4qWIiy&format=png" alt="" onclick="Pope1()">
+              </li>
+              <li class="li-1">
+                <div class="name">2nd Command</div>
+                <img class="ico" src="https://img.icons8.com/?size=256&id=57947&format=png" alt="" onclick="Command1()">
+              </li>
+              <li class="li-1">
+                <div class="name">Queen</div>
+                <img class="ico" src="https://img.icons8.com/?size=256&id=2899&format=png" alt="" onclick="Queen1()">
+              </li>
+              <li class="li-1">
+                <div class="name">King</div>
+                <img class="ico" src="https://img.icons8.com/?size=256&id=10393&format=png" alt="" onclick="King1()">
+              </li>
+          
+            </div>
+          </div>
+          
+    <script>
+        let icons = document.querySelectorAll(".ico");
+        let length = icons.length;
+        let slave = document.getElementsByClassName("slave");
+        let citezins = document.getElementsByClassName("citezins");
+        let lower_sct = document.getElementsByClassName("lower-sct");
+        let upper_sct = document.getElementsByClassName("Upper-sct");
+        let General = document.getElementsByClassName("General");
+        let Pineapple = document.getElementsByClassName("Pineapple");
+        let Pinecone = document.getElementsByClassName("Pinecone");
+        let Noble = document.getElementsByClassName("Noble");
+        let Noble_up = document.getElementsByClassName("Noble Up");
+        let Pope = document.getElementsByClassName("Pope");
+        let Command_2 = document.getElementsByClassName("Command");
+        let Queen = document.getElementsByClassName("Queen");
+        let King = document.getElementsByClassName("King");
+        
+        function hide_everything() {
+            slave[0].style.display = "none";
+            citezins[0].style.display = "none";
+            lower_sct[0].style.display = "none";
+            upper_sct[0].style.display = "none";
+            General[0].style.display = "none";
+            Pineapple[0].style.display = "none";
+            Pinecone[0].style.display = "none";
+            Noble[0].style.display = "none";
+            Noble_up[0].style.display = "none";
+            Pope[0].style.display = "none";
+            Command_2[0].style.display = "none";
+            Queen[0].style.display = "none";
+            King[0].style.display = "none";
+        }
+        
+        function Slave(){
+            console.log("Start")
+            hide_everything()
+            slave[0].style.display = "block";
+            console.log("Finnished")
+        }
+        function Ctitenzip(){
+            console.log("Start")
+            hide_everything()
+            citezins[0].style.display = "block";
+            console.log("Finnished")
+        }
+        function lower_sct1(){
+            console.log("Start")
+            hide_everything()
+            lower_sct[0].style.display = "block";
+            console.log("Finnished")
+        }
+        function upper_sct1(){
+            console.log("Start")
+            hide_everything()
+            upper_sct[0].style.display = "block";
+            console.log("Finnished")
+        }
+        function General1(){
+            console.log("Start")
+            hide_everything()
+            General[0].style.display = "block";
+            console.log("Finnished")
+        }
+        function Pineapple1(){
+            console.log("Start")
+            hide_everything()
+            Pineapple[0].style.display = "block";
+            console.log("Finnished")
+        }
+
+        function Pinecone1(){
+            console.log("Start")
+            hide_everything()
+            Pinecone[0].style.display = "block";
+            console.log("Finnished")
+        }
+        function Noble1(){
+            console.log("Start")
+            hide_everything()
+            Noble[0].style.display = "block";
+            console.log("Finnished")
+        }
+        function Noble1_up(){
+            console.log("Start")
+            hide_everything()
+            Noble_up[0].style.display = "block";
+            console.log("Finnished")
+        }
+        function Pope1(){
+            console.log("Start")
+            hide_everything()
+            Pope[0].style.display = "block";
+            console.log("Finnished")
+        }
+        function Command1(){
+            console.log("Start")
+            hide_everything()
+            Command_2[0].style.display = "block";
+            console.log("Finnished")
+        }
+        function Queen1(){
+            console.log("Start")
+            hide_everything()
+            Queen[0].style.display = "block";
+            console.log("Finnished")
+        }
+        function King1(){
+            console.log("Start")
+            hide_everything()
+            King[0].style.display = "block";
+            console.log("Finnished")
+        }
+
+
+
+
+
+
+
+
+        icons.forEach((item, index) => {
+        item.addEventListener("mouseover", (e) => {
+            focus(e.target, index);
+        });
+        item.addEventListener("mouseleave", (e) => {
+            icons.forEach((item) => {
+            item.style.transform = "scale(1)  translateY(0px)";
+            });
+        });
+        });
+
+        const focus = (elem, index) => {
+        let previous = index - 1;
+        let previous1 = index - 2;
+        let next = index + 1;
+        let next2 = index + 2;
+
+        if (previous == -1) {
+            console.log("first element");
+            elem.style.transform = "scale(1.5)  translateY(-10px)";
+        } else if (next == icons.length) {
+            elem.style.transform = "scale(1.5)  translateY(-10px)";
+            console.log("last element");
+        } else {
+            elem.style.transform = "scale(1.5)  translateY(-10px)";
+            icons[previous].style.transform = "scale(1.2) translateY(-6px)";
+            icons[previous1].style.transform = "scale(1.1)";
+            icons[next].style.transform = "scale(1.2) translateY(-6px)";
+            icons[next2].style.transform = "scale(1.1)";
+        }
+        };
+
+    </script>
+</body>
 </html>
